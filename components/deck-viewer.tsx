@@ -22,7 +22,14 @@ export function DeckViewer({ slug, title, slideCount }: DeckViewerProps) {
     const { clientWidth, clientHeight } = containerRef.current;
     const scaleX = clientWidth / 1920;
     const scaleY = clientHeight / 1080;
-    setScale(Math.min(scaleX, scaleY) * 0.95);
+    
+    // On mobile (portrait), fit to width; on desktop, contain
+    const isMobile = clientWidth < clientHeight;
+    if (isMobile) {
+      setScale(scaleX * 0.98);
+    } else {
+      setScale(Math.min(scaleX, scaleY) * 0.95);
+    }
   }, []);
 
   useEffect(() => {
