@@ -6,82 +6,77 @@
   <title>Spinup Whitelabel Partnership</title>
   <link rel="stylesheet" href="/brand.css">
   <style>
-    /* Page-specific overrides only */
-    .comparison { display: flex; gap: 40px; margin-top: 50px; }
-    .comparison-side { flex: 1; padding: 48px; }
-    .comparison-side.highlight-side { border: 2px solid var(--brand-accent); background: oklch(0.55 0.26 264 / 3%); }
-    .comparison-label { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--brand-fg-muted); margin-bottom: 20px; }
-    .comparison-side.highlight-side .comparison-label { color: var(--brand-accent); }
-    .comparison-title { font-size: 32px; font-weight: 800; color: var(--brand-fg); margin-bottom: 24px; }
+    /* Slide-specific styles */
+    .comparison { display: flex; gap: 32px; margin-top: 48px; }
+    .comparison-side { flex: 1; padding: 40px; }
+    .comparison-side.highlight { border: 2px solid var(--primary); }
+    .comparison-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--fg-muted); margin-bottom: 16px; }
+    .comparison-side.highlight .comparison-label { color: var(--primary); }
+    .comparison-title { font-size: 28px; font-weight: 700; color: var(--fg); margin-bottom: 20px; }
     .comparison-list { list-style: none; }
-    .comparison-list li { display: flex; align-items: flex-start; gap: 14px; font-size: 18px; color: var(--brand-fg-muted); margin-bottom: 16px; line-height: 1.4; }
-    .comparison-side.highlight-side .comparison-list li { color: var(--brand-fg); }
+    .comparison-list li { display: flex; align-items: center; gap: 12px; font-size: 16px; color: var(--fg-muted); margin-bottom: 14px; }
+    .comparison-list .icon { font-size: 18px; }
+    .comparison-side.highlight .comparison-list li { color: var(--fg); }
     
-    .flow-diagram { display: flex; align-items: center; justify-content: center; gap: 24px; margin-top: 60px; }
-    .flow-box { padding: 40px 48px; text-align: center; }
-    .flow-box.you { border: 2px solid oklch(0.55 0.26 264); background: oklch(0.55 0.26 264 / 5%); }
-    .flow-box.spinup { border: 2px solid var(--brand-accent); background: oklch(0.55 0.26 264 / 5%); }
-    .flow-icon { font-size: 48px; margin-bottom: 16px; }
-    .flow-title { font-size: 22px; font-weight: 700; color: var(--brand-fg); margin-bottom: 8px; }
-    .flow-desc { font-size: 15px; color: var(--brand-fg-muted); max-width: 180px; }
-    .flow-arrow { font-size: 32px; color: var(--brand-fg-muted); }
-    .flow-details { display: flex; justify-content: center; gap: 80px; margin-top: 50px; }
-    .flow-detail { text-align: center; }
-    .flow-detail-title { font-size: 16px; font-weight: 700; color: var(--brand-fg); margin-bottom: 6px; }
-    .flow-detail-text { font-size: 14px; color: var(--brand-fg-muted); }
+    .flow { display: flex; align-items: center; justify-content: center; gap: 20px; margin-top: 56px; }
+    .flow-box { padding: 36px 44px; text-align: center; min-width: 200px; }
+    .flow-box.accent { border: 2px solid var(--primary); }
+    .flow-icon { font-size: 40px; margin-bottom: 12px; }
+    .flow-title { font-size: 18px; font-weight: 600; color: var(--fg); margin-bottom: 6px; }
+    .flow-desc { font-size: 14px; color: var(--fg-muted); }
+    .flow-arrow { font-size: 24px; color: var(--fg-muted); }
+    .flow-info { display: flex; justify-content: center; gap: 64px; margin-top: 40px; }
+    .flow-info-item { text-align: center; }
+    .flow-info-title { font-size: 14px; font-weight: 600; color: var(--fg); margin-bottom: 4px; }
+    .flow-info-text { font-size: 13px; color: var(--fg-muted); }
     
-    .pricing-hero { display: flex; align-items: center; gap: 80px; margin-top: 40px; }
-    .pricing-box { padding: 60px 80px; border: 2px solid var(--brand-accent); border-radius: 24px; box-shadow: 0 8px 40px oklch(0.55 0.26 264 / 10%); }
-    .pricing-value { font-family: var(--font-mono); font-size: 120px; font-weight: 800; line-height: 1; letter-spacing: -4px; }
-    .pricing-unit { font-size: 28px; font-weight: 600; color: var(--brand-accent); margin-top: 8px; }
+    .pricing-row { display: flex; align-items: center; gap: 64px; margin-top: 40px; }
+    .pricing-box { padding: 48px 64px; border: 2px solid var(--primary); border-radius: var(--radius-lg); }
+    .pricing-value { font-family: var(--font-mono); font-size: 96px; font-weight: 700; color: var(--primary); line-height: 1; }
+    .pricing-unit { font-size: 20px; font-weight: 500; color: var(--fg-muted); margin-top: 8px; }
     .pricing-details { flex: 1; }
-    .pricing-item { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 28px; }
-    .pricing-icon { width: 36px; height: 36px; background: var(--brand-accent-soft); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
-    .pricing-text { font-size: 20px; color: var(--brand-fg); line-height: 1.5; }
-    .pricing-text strong { color: var(--brand-accent); }
+    .pricing-item { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 24px; }
+    .pricing-item .icon { width: 32px; height: 32px; background: var(--bg-muted); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+    .pricing-item .text { font-size: 18px; color: var(--fg); line-height: 1.5; }
+    .pricing-item strong { color: var(--primary); }
     
-    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 50px; }
-    .feature-card .feature-icon { width: 52px; height: 52px; background: var(--brand-accent-soft); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 20px; }
-    .feature-card .feature-title { font-size: 20px; font-weight: 700; color: var(--brand-fg); margin-bottom: 8px; }
-    .feature-card .feature-desc { font-size: 15px; color: var(--brand-fg-muted); line-height: 1.5; }
+    .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; }
+    .feature-card { padding: 28px; }
+    .feature-icon { width: 44px; height: 44px; background: var(--bg-muted); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 16px; }
+    .feature-title { font-size: 18px; font-weight: 600; color: var(--fg); margin-bottom: 8px; }
+    .feature-desc { font-size: 14px; color: var(--fg-muted); line-height: 1.5; }
     
-    .usecases-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin-top: 50px; max-width: 1400px; }
-    .usecase-card { display: flex; gap: 24px; padding: 36px; }
-    .usecase-icon { width: 64px; height: 64px; background: var(--brand-accent-soft); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0; }
-    .usecase-title { font-size: 22px; font-weight: 700; color: var(--brand-fg); margin-bottom: 8px; }
-    .usecase-desc { font-size: 16px; color: var(--brand-fg-muted); line-height: 1.5; }
+    .usecases { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 48px; }
+    .usecase-card { display: flex; gap: 20px; padding: 28px; }
+    .usecase-icon { width: 52px; height: 52px; background: var(--bg-muted); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
+    .usecase-title { font-size: 18px; font-weight: 600; color: var(--fg); margin-bottom: 6px; }
+    .usecase-desc { font-size: 14px; color: var(--fg-muted); line-height: 1.5; }
     
-    .contact-info { margin-top: 48px; display: flex; gap: 40px; }
-    .contact-item { display: flex; align-items: center; gap: 12px; font-size: 18px; color: var(--brand-fg-muted); }
-    .contact-item .icon { width: 40px; height: 40px; background: var(--brand-card); border: 1px solid var(--brand-border); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+    .cta-section { display: flex; flex-direction: column; align-items: center; }
+    .contact-row { display: flex; gap: 32px; margin-top: 40px; }
+    .contact-item { display: flex; align-items: center; gap: 10px; font-size: 16px; color: var(--fg-muted); }
+    .contact-item .icon { width: 36px; height: 36px; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; }
   </style>
 </head>
 <body>
   <!-- Slide 1: Intro -->
   <div class="slide">
-    <div class="gradient-blob primary" style="width: 800px; height: 800px; top: -300px; right: -200px;"></div>
-    <div class="gradient-blob secondary" style="width: 800px; height: 800px; bottom: -300px; left: -200px;"></div>
-    
     <div class="header">
       <div class="brand-logo">
-        <img src="/logo.png" alt="Spinup">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
         Spinup
       </div>
       <div class="badge">Whitelabel Partnership</div>
     </div>
     
     <div class="content">
-      <h1 class="text-display">
-        Your brand.<br>
-        <span class="text-gradient">Our platform.</span>
-      </h1>
-      
-      <p class="text-body" style="max-width: 750px; margin-top: 28px;">
+      <span class="text-label">Partnership Program</span>
+      <h1 class="text-display mt-sm">Your brand.<br>Our platform.</h1>
+      <p class="text-body max-w-lg mt-md">
         Offer AI assistants to your customers under your own brand. 
         We handle the infrastructure, you keep the relationship.
       </p>
-      
-      <div class="flex-row" style="margin-top: 48px;">
+      <div class="flex-row mt-lg">
         <div class="tag">🏷️ 100% your branding</div>
         <div class="tag">💰 You set your prices</div>
         <div class="tag">⚡ We handle the tech</div>
@@ -89,273 +84,250 @@
     </div>
     
     <div class="footer">
-      <span class="text-small">Whitelabel Partnership 2026</span>
-      <span class="text-small">getspinup.com</span>
+      <span>Whitelabel Partnership 2026</span>
+      <span>getspinup.com</span>
     </div>
   </div>
   
   <!-- Slide 2: What is whitelabel -->
   <div class="slide">
-    <div class="gradient-blob primary" style="width: 800px; height: 800px; top: -300px; right: -200px;"></div>
-    
     <div class="header">
       <div class="brand-logo">
-        <img src="/logo.png" alt="Spinup">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
         Spinup
       </div>
       <div class="badge">What is whitelabel?</div>
     </div>
     
     <div class="content">
-      <h1 class="text-display">
-        Resell AI assistants<br>
-        <span class="text-gradient">as your own product.</span>
-      </h1>
+      <span class="text-label">The difference</span>
+      <h1 class="text-display mt-sm">Resell AI assistants<br>as your own product.</h1>
       
       <div class="comparison">
-        <div class="comparison-side card card-elevated">
+        <div class="comparison-side card">
           <div class="comparison-label">Without whitelabel</div>
           <div class="comparison-title">Referral / Affiliate</div>
           <ul class="comparison-list">
-            <li><span>→</span> You send customers to us</li>
-            <li><span>→</span> They see our brand</li>
-            <li><span>→</span> They pay us directly</li>
-            <li><span>→</span> You earn commission</li>
+            <li><span class="icon">→</span> You send customers to us</li>
+            <li><span class="icon">→</span> They see our brand</li>
+            <li><span class="icon">→</span> They pay us directly</li>
+            <li><span class="icon">→</span> You earn commission</li>
           </ul>
         </div>
         
-        <div class="comparison-side card card-elevated highlight-side">
+        <div class="comparison-side card highlight">
           <div class="comparison-label">With whitelabel</div>
           <div class="comparison-title">Your Product</div>
           <ul class="comparison-list">
-            <li><span>✓</span> Customers only see your brand</li>
-            <li><span>✓</span> You set your own pricing</li>
-            <li><span>✓</span> You own the customer relationship</li>
-            <li><span>✓</span> You keep the margin</li>
+            <li><span class="icon">✓</span> Customers only see your brand</li>
+            <li><span class="icon">✓</span> You set your own pricing</li>
+            <li><span class="icon">✓</span> You own the customer relationship</li>
+            <li><span class="icon">✓</span> You keep the margin</li>
           </ul>
         </div>
       </div>
     </div>
     
     <div class="footer">
-      <span class="text-small">Whitelabel Partnership 2026</span>
-      <span class="text-small">getspinup.com</span>
+      <span>Whitelabel Partnership 2026</span>
+      <span>getspinup.com</span>
     </div>
   </div>
   
   <!-- Slide 3: How it works -->
   <div class="slide">
-    <div class="gradient-blob secondary" style="width: 800px; height: 800px; bottom: -300px; left: -200px;"></div>
-    
     <div class="header">
       <div class="brand-logo">
-        <img src="/logo.png" alt="Spinup">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
         Spinup
       </div>
       <div class="badge">How it works</div>
     </div>
     
     <div class="content">
-      <h1 class="text-display">
-        Simple <span class="text-gradient">wholesale</span> model.
-      </h1>
+      <span class="text-label">Simple wholesale model</span>
+      <h1 class="text-display mt-sm">You sell, we power.</h1>
       
-      <div class="flow-diagram">
-        <div class="flow-box card card-elevated">
+      <div class="flow">
+        <div class="flow-box card">
           <div class="flow-icon">👤</div>
           <div class="flow-title">Your customer</div>
           <div class="flow-desc">Pays you for AI assistant</div>
         </div>
-        
         <div class="flow-arrow">→</div>
-        
-        <div class="flow-box card card-elevated you">
+        <div class="flow-box card accent">
           <div class="flow-icon">🏢</div>
           <div class="flow-title">You</div>
           <div class="flow-desc">Sell under your brand</div>
         </div>
-        
         <div class="flow-arrow">→</div>
-        
-        <div class="flow-box card card-elevated spinup">
+        <div class="flow-box card">
           <div class="flow-icon">⚡</div>
           <div class="flow-title">Spinup</div>
           <div class="flow-desc">Powers the platform</div>
         </div>
       </div>
       
-      <div class="flow-details">
-        <div class="flow-detail">
-          <div class="flow-detail-title">You invoice your customer</div>
-          <div class="flow-detail-text">At whatever price you set</div>
+      <div class="flow-info">
+        <div class="flow-info-item">
+          <div class="flow-info-title">You invoice your customer</div>
+          <div class="flow-info-text">At whatever price you set</div>
         </div>
-        <div class="flow-detail">
-          <div class="flow-detail-title">We invoice you monthly</div>
-          <div class="flow-detail-text">Fixed rate per active bot</div>
+        <div class="flow-info-item">
+          <div class="flow-info-title">We invoice you monthly</div>
+          <div class="flow-info-text">Fixed rate per active bot</div>
         </div>
-        <div class="flow-detail">
-          <div class="flow-detail-title">You keep the margin</div>
-          <div class="flow-detail-text">Difference is your profit</div>
+        <div class="flow-info-item">
+          <div class="flow-info-title">You keep the margin</div>
+          <div class="flow-info-text">Difference is your profit</div>
         </div>
       </div>
     </div>
     
     <div class="footer">
-      <span class="text-small">Whitelabel Partnership 2026</span>
-      <span class="text-small">getspinup.com</span>
+      <span>Whitelabel Partnership 2026</span>
+      <span>getspinup.com</span>
     </div>
   </div>
   
   <!-- Slide 4: Pricing -->
   <div class="slide">
-    <div class="gradient-blob primary" style="width: 800px; height: 800px; top: -300px; right: -200px;"></div>
-    
     <div class="header">
       <div class="brand-logo">
-        <img src="/logo.png" alt="Spinup">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
         Spinup
       </div>
       <div class="badge">Pricing</div>
     </div>
     
     <div class="content">
-      <h1 class="text-display">
-        <span class="text-gradient">€X</span> per bot.<br>
-        That's it.
-      </h1>
+      <span class="text-label">Wholesale pricing</span>
+      <h1 class="text-display mt-sm">€X per bot. That's it.</h1>
       
-      <div class="pricing-hero">
+      <div class="pricing-row">
         <div class="pricing-box">
-          <div class="pricing-value text-gradient">€X</div>
+          <div class="pricing-value">€X</div>
           <div class="pricing-unit">per active bot / month</div>
         </div>
         
         <div class="pricing-details">
           <div class="pricing-item">
-            <div class="pricing-icon">📊</div>
-            <div class="pricing-text"><strong>Simple usage-based billing</strong> — we count active bots at end of month</div>
+            <div class="icon">📊</div>
+            <div class="text"><strong>Simple usage-based billing</strong> — we count active bots at end of month</div>
           </div>
           <div class="pricing-item">
-            <div class="pricing-icon">💵</div>
-            <div class="pricing-text"><strong>You set retail price</strong> — charge €25, €50, €100… your call</div>
+            <div class="icon">💵</div>
+            <div class="text"><strong>You set retail price</strong> — charge €25, €50, €100… your call</div>
           </div>
           <div class="pricing-item">
-            <div class="pricing-icon">📈</div>
-            <div class="pricing-text"><strong>No caps, no tiers</strong> — same rate whether you have 5 or 500 bots</div>
+            <div class="icon">📈</div>
+            <div class="text"><strong>No caps, no tiers</strong> — same rate whether you have 5 or 500 bots</div>
           </div>
           <div class="pricing-item">
-            <div class="pricing-icon">🤝</div>
-            <div class="pricing-text"><strong>Volume? Let's talk</strong> — custom rates for large deployments</div>
+            <div class="icon">🤝</div>
+            <div class="text"><strong>Volume? Let's talk</strong> — custom rates for large deployments</div>
           </div>
         </div>
       </div>
     </div>
     
     <div class="footer">
-      <span class="text-small">Whitelabel Partnership 2026</span>
-      <span class="text-small">getspinup.com</span>
+      <span>Whitelabel Partnership 2026</span>
+      <span>getspinup.com</span>
     </div>
   </div>
   
   <!-- Slide 5: What's included -->
   <div class="slide">
-    <div class="gradient-blob secondary" style="width: 800px; height: 800px; bottom: -300px; left: -200px;"></div>
-    
     <div class="header">
       <div class="brand-logo">
-        <img src="/logo.png" alt="Spinup">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
         Spinup
       </div>
       <div class="badge">What's included</div>
     </div>
     
     <div class="content">
-      <h1 class="text-display">
-        Everything you need<br>
-        <span class="text-gradient">to launch.</span>
-      </h1>
+      <span class="text-label">Everything you need</span>
+      <h1 class="text-display mt-sm">Ready to launch.</h1>
       
-      <div class="features-grid">
-        <div class="feature-card card card-elevated">
+      <div class="features">
+        <div class="feature-card card">
           <div class="feature-icon">🎨</div>
           <div class="feature-title">Full white-labeling</div>
-          <div class="feature-desc">Your logo, colors, domain. No Spinup branding visible to your customers.</div>
+          <div class="feature-desc">Your logo, colors, domain. No Spinup branding visible.</div>
         </div>
-        <div class="feature-card card card-elevated">
+        <div class="feature-card card">
           <div class="feature-icon">🔌</div>
           <div class="feature-title">API access</div>
-          <div class="feature-desc">Integrate bot provisioning into your existing platform or workflow.</div>
+          <div class="feature-desc">Integrate bot provisioning into your platform.</div>
         </div>
-        <div class="feature-card card card-elevated">
+        <div class="feature-card card">
           <div class="feature-icon">📱</div>
           <div class="feature-title">All channels</div>
-          <div class="feature-desc">Telegram, Discord, WhatsApp, Slack, web chat — all included.</div>
+          <div class="feature-desc">Telegram, Discord, WhatsApp, Slack, web chat.</div>
         </div>
-        <div class="feature-card card card-elevated">
+        <div class="feature-card card">
           <div class="feature-icon">🧠</div>
           <div class="feature-title">Any AI model</div>
-          <div class="feature-desc">OpenAI, Anthropic, Gemini, Mistral — your choice per bot.</div>
+          <div class="feature-desc">OpenAI, Anthropic, Gemini, Mistral — your choice.</div>
         </div>
-        <div class="feature-card card card-elevated">
+        <div class="feature-card card">
           <div class="feature-icon">🛡️</div>
           <div class="feature-title">Isolated infrastructure</div>
-          <div class="feature-desc">Each bot on secure VPS. Enterprise-grade security.</div>
+          <div class="feature-desc">Each bot on secure VPS. Enterprise-grade.</div>
         </div>
-        <div class="feature-card card card-elevated">
+        <div class="feature-card card">
           <div class="feature-icon">💬</div>
           <div class="feature-title">Partner support</div>
-          <div class="feature-desc">Direct Slack/Discord channel with our team. Priority response.</div>
+          <div class="feature-desc">Direct channel with our team. Priority response.</div>
         </div>
       </div>
     </div>
     
     <div class="footer">
-      <span class="text-small">Whitelabel Partnership 2026</span>
-      <span class="text-small">getspinup.com</span>
+      <span>Whitelabel Partnership 2026</span>
+      <span>getspinup.com</span>
     </div>
   </div>
   
   <!-- Slide 6: Use cases -->
   <div class="slide">
-    <div class="gradient-blob primary" style="width: 800px; height: 800px; top: -300px; right: -200px;"></div>
-    
     <div class="header">
       <div class="brand-logo">
-        <img src="/logo.png" alt="Spinup">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
         Spinup
       </div>
       <div class="badge">Who it's for</div>
     </div>
     
     <div class="content">
-      <h1 class="text-display">
-        Perfect for<br>
-        <span class="text-gradient">these businesses.</span>
-      </h1>
+      <span class="text-label">Ideal partners</span>
+      <h1 class="text-display mt-sm">Perfect for these businesses.</h1>
       
-      <div class="usecases-grid">
-        <div class="usecase-card card card-elevated">
+      <div class="usecases">
+        <div class="usecase-card card">
           <div class="usecase-icon">🏢</div>
           <div>
             <div class="usecase-title">Digital agencies</div>
             <div class="usecase-desc">Add AI assistants to your service offering. Deliver chatbots, support agents, or custom bots for clients.</div>
           </div>
         </div>
-        <div class="usecase-card card card-elevated">
+        <div class="usecase-card card">
           <div class="usecase-icon">💻</div>
           <div>
             <div class="usecase-title">SaaS platforms</div>
             <div class="usecase-desc">Embed AI assistants into your product. Let users create bots without leaving your platform.</div>
           </div>
         </div>
-        <div class="usecase-card card card-elevated">
+        <div class="usecase-card card">
           <div class="usecase-icon">🎯</div>
           <div>
             <div class="usecase-title">Consultancies</div>
             <div class="usecase-desc">Deploy AI solutions for enterprise clients. Scale without building infrastructure.</div>
           </div>
         </div>
-        <div class="usecase-card card card-elevated">
+        <div class="usecase-card card">
           <div class="usecase-icon">🏠</div>
           <div>
             <div class="usecase-title">Vertical SaaS</div>
@@ -366,45 +338,39 @@
     </div>
     
     <div class="footer">
-      <span class="text-small">Whitelabel Partnership 2026</span>
-      <span class="text-small">getspinup.com</span>
+      <span>Whitelabel Partnership 2026</span>
+      <span>getspinup.com</span>
     </div>
   </div>
   
   <!-- Slide 7: CTA -->
   <div class="slide">
-    <div class="gradient-blob primary" style="width: 800px; height: 800px; top: -300px; right: -200px;"></div>
-    <div class="gradient-blob secondary" style="width: 800px; height: 800px; bottom: -300px; left: -200px;"></div>
-    
     <div class="header">
       <div class="brand-logo">
-        <img src="/logo.png" alt="Spinup">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
         Spinup
       </div>
     </div>
     
     <div class="content content-center">
-      <h1 class="text-display">
-        <span class="text-gradient">Let's build together.</span>
-      </h1>
-      
-      <p class="text-body" style="max-width: 800px; margin-top: 28px;">
-        Tell us about your business and what you want to offer. 
-        We'll set up a pilot and get you live in days.
-      </p>
-      
-      <div class="btn btn-primary" style="margin-top: 50px;">
-        Schedule a call →
-      </div>
-      
-      <div class="contact-info">
-        <div class="contact-item">
-          <div class="icon">✉️</div>
-          <span>partners@getspinup.com</span>
-        </div>
-        <div class="contact-item">
-          <div class="icon">🌐</div>
-          <span>getspinup.com</span>
+      <div class="cta-section">
+        <span class="text-label">Get started</span>
+        <h1 class="text-display mt-sm">Let's build together.</h1>
+        <p class="text-body max-w-xl mt-md">
+          Tell us about your business and what you want to offer. 
+          We'll set up a pilot and get you live in days.
+        </p>
+        <div class="btn btn-primary btn-lg mt-lg">Schedule a call →</div>
+        
+        <div class="contact-row">
+          <div class="contact-item">
+            <div class="icon">✉️</div>
+            <span>partners@getspinup.com</span>
+          </div>
+          <div class="contact-item">
+            <div class="icon">🌐</div>
+            <span>getspinup.com</span>
+          </div>
         </div>
       </div>
     </div>

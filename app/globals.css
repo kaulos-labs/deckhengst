@@ -32,10 +32,11 @@ body {
   background: #000;
 }
 
-/* On mobile portrait, align to top */
+/* On mobile portrait, center horizontally and align to top */
 @media (orientation: portrait) {
   .deck-container {
     align-items: flex-start;
+    justify-content: center;
     padding-top: 60px;
     padding-bottom: 100px;
   }
