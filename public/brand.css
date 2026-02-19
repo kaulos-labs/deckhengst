@@ -1,0 +1,324 @@
+/**
+ * Spinup Brand CSS
+ * Use this in slide decks for consistent branding
+ * 
+ * Usage in your deck HTML:
+ * <link rel="stylesheet" href="/brand.css">
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  /* ===== SPINUP BRAND COLORS ===== */
+  /* Warm violet undertone (hue ~275) */
+  
+  /* Light mode */
+  --brand-bg: oklch(0.995 0.003 275);
+  --brand-bg-alt: oklch(0.97 0.006 275);
+  --brand-fg: oklch(0.145 0.014 275);
+  --brand-fg-muted: oklch(0.54 0.022 275);
+  --brand-card: oklch(1 0.002 275);
+  --brand-border: oklch(0.912 0.008 275);
+  
+  /* Primary (deep violet-ink) */
+  --brand-primary: oklch(0.235 0.028 275);
+  --brand-primary-fg: oklch(0.985 0.003 275);
+  
+  /* Accent (vivid violet) */
+  --brand-accent: oklch(0.55 0.26 264);
+  --brand-accent-soft: oklch(0.55 0.26 264 / 10%);
+  
+  /* Status colors */
+  --brand-success: oklch(0.52 0.14 160);
+  --brand-warning: oklch(0.7 0.16 75);
+  --brand-error: oklch(0.577 0.245 27.325);
+  
+  /* Chart palette */
+  --brand-chart-1: oklch(0.646 0.24 41);
+  --brand-chart-2: oklch(0.62 0.16 185);
+  --brand-chart-3: oklch(0.45 0.12 260);
+  --brand-chart-4: oklch(0.78 0.2 84);
+  --brand-chart-5: oklch(0.65 0.22 330);
+  
+  /* Radius */
+  --brand-radius: 0.5rem;
+  --brand-radius-lg: 0.75rem;
+  --brand-radius-xl: 1rem;
+  
+  /* ===== TYPOGRAPHY ===== */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* Dark mode overrides */
+.dark, [data-theme="dark"] {
+  --brand-bg: oklch(0.145 0.014 275);
+  --brand-bg-alt: oklch(0.175 0.016 275);
+  --brand-fg: oklch(0.94 0.008 275);
+  --brand-fg-muted: oklch(0.68 0.02 275);
+  --brand-card: oklch(0.195 0.016 275);
+  --brand-border: oklch(0.94 0.008 275 / 12%);
+  --brand-primary: oklch(0.94 0.008 275);
+  --brand-primary-fg: oklch(0.195 0.016 275);
+}
+
+/* ===== BASE STYLES ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--brand-bg);
+  color: var(--brand-fg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== SLIDE DECK UTILITIES ===== */
+.slide {
+  width: 1920px;
+  height: 1080px;
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+  background: var(--brand-bg);
+}
+
+.slide.dark {
+  background: var(--brand-bg);
+  --brand-bg: oklch(0.145 0.014 275);
+  --brand-fg: oklch(0.94 0.008 275);
+  --brand-fg-muted: oklch(0.68 0.02 275);
+  --brand-card: oklch(0.195 0.016 275);
+  --brand-border: oklch(0.94 0.008 275 / 12%);
+}
+
+/* Gradient blobs for visual interest */
+.gradient-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.gradient-blob.primary {
+  background: radial-gradient(circle, oklch(0.55 0.26 264 / 15%) 0%, transparent 70%);
+}
+
+.gradient-blob.secondary {
+  background: radial-gradient(circle, oklch(0.65 0.18 300 / 12%) 0%, transparent 70%);
+}
+
+.gradient-blob.warm {
+  background: radial-gradient(circle, oklch(0.72 0.18 60 / 12%) 0%, transparent 70%);
+}
+
+/* ===== TYPOGRAPHY UTILITIES ===== */
+.text-display {
+  font-size: 100px;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -3px;
+  color: var(--brand-fg);
+}
+
+.text-headline {
+  font-size: 64px;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -2px;
+  color: var(--brand-fg);
+}
+
+.text-title {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--brand-fg);
+}
+
+.text-body {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--brand-fg-muted);
+}
+
+.text-small {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--brand-fg-muted);
+}
+
+.text-mono {
+  font-family: var(--font-mono);
+}
+
+/* Gradient text */
+.text-gradient {
+  background: linear-gradient(135deg, oklch(0.55 0.26 264) 0%, oklch(0.65 0.22 280) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-warm {
+  background: linear-gradient(135deg, oklch(0.72 0.18 60) 0%, oklch(0.7 0.2 45) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-success {
+  background: linear-gradient(135deg, oklch(0.52 0.14 160) 0%, oklch(0.6 0.16 150) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== CARD UTILITIES ===== */
+.card {
+  background: var(--brand-card);
+  border: 1px solid var(--brand-border);
+  border-radius: var(--brand-radius-lg);
+  padding: 32px;
+}
+
+.card-elevated {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+}
+
+/* ===== BADGE/TAG UTILITIES ===== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--brand-accent-soft);
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--brand-accent);
+}
+
+.tag {
+  padding: 12px 20px;
+  background: var(--brand-card);
+  border: 1px solid var(--brand-border);
+  border-radius: var(--brand-radius);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--brand-fg);
+}
+
+/* ===== BUTTON UTILITIES ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 32px;
+  border-radius: var(--brand-radius-lg);
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, oklch(0.55 0.26 264) 0%, oklch(0.50 0.24 280) 100%);
+  color: white;
+  box-shadow: 0 4px 16px oklch(0.55 0.26 264 / 25%);
+}
+
+/* ===== LAYOUT UTILITIES ===== */
+.content {
+  position: relative;
+  z-index: 10;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 100px 140px;
+}
+
+.content-center {
+  align-items: center;
+  text-align: center;
+}
+
+.header {
+  position: absolute;
+  top: 50px;
+  left: 140px;
+  right: 140px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer {
+  position: absolute;
+  bottom: 50px;
+  left: 140px;
+  right: 140px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ===== BRAND LOGO ===== */
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--brand-fg);
+}
+
+.brand-logo img {
+  height: 40px;
+  width: auto;
+}
+
+/* ===== GRID UTILITIES ===== */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+  .slide {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+
+@page {
+  size: 1920px 1080px;
+  margin: 0;
+}
