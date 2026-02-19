@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Spinup Whitelabel Partnership</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+    
+    @page {
+      size: 1920px 1080px;
+      margin: 0;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #faf9fb;
+      color: #1a1523;
+    }
+    
+    .slide {
+      width: 1920px;
+      height: 1080px;
+      position: relative;
+      overflow: hidden;
+      page-break-after: always;
+      background: #faf9fb;
+    }
+    
+    :root {
+      --bg: #faf9fb;
+      --bg-card: #ffffff;
+      --fg: #1a1523;
+      --fg-muted: #6b6779;
+      --primary: #7c5cff;
+      --primary-soft: rgba(124, 92, 255, 0.1);
+      --border: rgba(26, 21, 35, 0.08);
+      --accent-blue: #3b82f6;
+      --accent-blue-soft: rgba(59, 130, 246, 0.1);
+    }
+    
+    .gradient-blob {
+      position: absolute;
+      width: 800px;
+      height: 800px;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.5;
+    }
+    
+    .blob-1 {
+      top: -300px;
+      right: -200px;
+      background: radial-gradient(circle, rgba(124, 92, 255, 0.15) 0%, transparent 70%);
+    }
+    
+    .blob-2 {
+      bottom: -300px;
+      left: -200px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, transparent 70%);
+    }
+    
+    .content {
+      position: relative;
+      z-index: 10;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 100px 140px;
+    }
+    
+    .header {
+      position: absolute;
+      top: 50px;
+      left: 140px;
+      right: 140px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--fg);
+    }
+    
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #7c5cff 0%, #a78bfa 100%);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      color: white;
+    }
+    
+    .badge {
+      padding: 8px 16px;
+      background: var(--accent-blue-soft);
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent-blue);
+    }
+    
+    h1 {
+      font-size: 100px;
+      font-weight: 800;
+      line-height: 1.05;
+      margin-bottom: 28px;
+      letter-spacing: -3px;
+      color: var(--fg);
+    }
+    
+    h1 .highlight {
+      background: linear-gradient(135deg, #7c5cff 0%, #a78bfa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    h1 .highlight-blue {
+      background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .subtitle {
+      font-size: 26px;
+      font-weight: 400;
+      color: var(--fg-muted);
+      max-width: 750px;
+      line-height: 1.55;
+    }
+    
+    .footer {
+      position: absolute;
+      bottom: 50px;
+      left: 140px;
+      right: 140px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .footer-text {
+      font-size: 14px;
+      color: var(--fg-muted);
+    }
+    
+    .footer-url {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--fg-muted);
+    }
+    
+    /* ========== SLIDE 1 - Intro ========== */
+    .slide-1 h1 {
+      font-size: 105px;
+    }
+    
+    .value-props {
+      display: flex;
+      gap: 32px;
+      margin-top: 48px;
+    }
+    
+    .value-prop {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 18px 28px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--fg);
+    }
+    
+    .value-prop .icon {
+      font-size: 22px;
+    }
+    
+    /* ========== SLIDE 2 - What is whitelabel ========== */
+    .comparison {
+      display: flex;
+      gap: 40px;
+      margin-top: 50px;
+    }
+    
+    .comparison-side {
+      flex: 1;
+      padding: 48px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+    }
+    
+    .comparison-side.highlight-side {
+      border: 2px solid var(--primary);
+      background: linear-gradient(135deg, rgba(124, 92, 255, 0.03) 0%, rgba(124, 92, 255, 0.01) 100%);
+    }
+    
+    .comparison-label {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--fg-muted);
+      margin-bottom: 20px;
+    }
+    
+    .comparison-side.highlight-side .comparison-label {
+      color: var(--primary);
+    }
+    
+    .comparison-title {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--fg);
+      margin-bottom: 24px;
+    }
+    
+    .comparison-list {
+      list-style: none;
+    }
+    
+    .comparison-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 18px;
+      color: var(--fg-muted);
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+    
+    .comparison-list li .icon {
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    
+    .comparison-side.highlight-side .comparison-list li {
+      color: var(--fg);
+    }
+    
+    /* ========== SLIDE 3 - How it works ========== */
+    .flow-diagram {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 60px;
+    }
+    
+    .flow-box {
+      padding: 40px 48px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+    }
+    
+    .flow-box.you {
+      border: 2px solid var(--accent-blue);
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, transparent 100%);
+    }
+    
+    .flow-box.spinup {
+      border: 2px solid var(--primary);
+      background: linear-gradient(135deg, rgba(124, 92, 255, 0.05) 0%, transparent 100%);
+    }
+    
+    .flow-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+    
+    .flow-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--fg);
+      margin-bottom: 8px;
+    }
+    
+    .flow-desc {
+      font-size: 15px;
+      color: var(--fg-muted);
+      max-width: 180px;
+    }
+    
+    .flow-arrow {
+      font-size: 32px;
+      color: var(--fg-muted);
+    }
+    
+    .flow-details {
+      display: flex;
+      justify-content: center;
+      gap: 80px;
+      margin-top: 50px;
+    }
+    
+    .flow-detail {
+      text-align: center;
+    }
+    
+    .flow-detail-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--fg);
+      margin-bottom: 6px;
+    }
+    
+    .flow-detail-text {
+      font-size: 14px;
+      color: var(--fg-muted);
+    }
+    
+    /* ========== SLIDE 4 - Pricing ========== */
+    .pricing-hero {
+      display: flex;
+      align-items: center;
+      gap: 80px;
+      margin-top: 40px;
+    }
+    
+    .pricing-box {
+      padding: 60px 80px;
+      background: var(--bg-card);
+      border: 2px solid var(--primary);
+      border-radius: 24px;
+      box-shadow: 0 8px 40px rgba(124, 92, 255, 0.1);
+    }
+    
+    .pricing-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 120px;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -4px;
+      background: linear-gradient(135deg, #7c5cff 0%, #a78bfa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .pricing-unit {
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--primary);
+      margin-top: 8px;
+    }
+    
+    .pricing-details {
+      flex: 1;
+    }
+    
+    .pricing-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    
+    .pricing-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--primary-soft);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    
+    .pricing-text {
+      font-size: 20px;
+      color: var(--fg);
+      line-height: 1.5;
+    }
+    
+    .pricing-text strong {
+      color: var(--primary);
+    }
+    
+    /* ========== SLIDE 5 - What's included ========== */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 50px;
+    }
+    
+    .feature-card {
+      padding: 36px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+    }
+    
+    .feature-icon {
+      width: 52px;
+      height: 52px;
+      background: var(--primary-soft);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    
+    .feature-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--fg);
+      margin-bottom: 8px;
+    }
+    
+    .feature-desc {
+      font-size: 15px;
+      color: var(--fg-muted);
+      line-height: 1.5;
+    }
+    
+    /* ========== SLIDE 6 - Use cases ========== */
+    .usecases-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+      margin-top: 50px;
+      max-width: 1400px;
+    }
+    
+    .usecase-card {
+      display: flex;
+      gap: 24px;
+      padding: 36px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+    }
+    
+    .usecase-icon {
+      width: 64px;
+      height: 64px;
+      background: var(--accent-blue-soft);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      flex-shrink: 0;
+    }
+    
+    .usecase-content {
+      flex: 1;
+    }
+    
+    .usecase-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--fg);
+      margin-bottom: 8px;
+    }
+    
+    .usecase-desc {
+      font-size: 16px;
+      color: var(--fg-muted);
+      line-height: 1.5;
+    }
+    
+    /* ========== SLIDE 7 - CTA ========== */
+    .slide-7 .content {
+      align-items: center;
+      text-align: center;
+    }
+    
+    .slide-7 h1 {
+      font-size: 120px;
+    }
+    
+    .slide-7 .subtitle {
+      text-align: center;
+      max-width: 800px;
+      margin-bottom: 50px;
+    }
+    
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 24px 56px;
+      background: linear-gradient(135deg, #7c5cff 0%, #6d4aff 100%);
+      border-radius: 14px;
+      font-size: 22px;
+      font-weight: 700;
+      color: white;
+      box-shadow: 0 8px 32px rgba(124, 92, 255, 0.35);
+    }
+    
+    .contact-info {
+      margin-top: 48px;
+      display: flex;
+      gap: 40px;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 18px;
+      color: var(--fg-muted);
+    }
+    
+    .contact-item .icon {
+      width: 40px;
+      height: 40px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Slide 1: Intro -->
+  <div class="slide slide-1">
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    
+    <div class="header">
+      <div class="brand">
+        <div class="brand-icon">⚡</div>
+        Spinup
+      </div>
+      <div class="badge">Whitelabel Partnership</div>
+    </div>
+    
+    <div class="content">
+      <h1>
+        Your brand.<br>
+        <span class="highlight">Our platform.</span>
+      </h1>
+      
+      <p class="subtitle">
+        Offer AI assistants to your customers under your own brand. 
+        We handle the infrastructure, you keep the relationship.
+      </p>
+      
+      <div class="value-props">
+        <div class="value-prop">
+          <span class="icon">🏷️</span>
+          100% your branding
+        </div>
+        <div class="value-prop">
+          <span class="icon">💰</span>
+          You set your prices
+        </div>
+        <div class="value-prop">
+          <span class="icon">⚡</span>
+          We handle the tech
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer">
+      <div class="footer-text">Whitelabel Partnership 2026</div>
+      <div class="footer-url">getspinup.com</div>
+    </div>
+  </div>
+  
+  <!-- Slide 2: What is whitelabel -->
+  <div class="slide slide-2">
+    <div class="gradient-blob blob-1"></div>
+    
+    <div class="header">
+      <div class="brand">
+        <div class="brand-icon">⚡</div>
+        Spinup
+      </div>
+      <div class="badge">What is whitelabel?</div>
+    </div>
+    
+    <div class="content">
+      <h1>
+        Resell AI assistants<br>
+        <span class="highlight-blue">as your own product.</span>
+      </h1>
+      
+      <div class="comparison">
+        <div class="comparison-side">
+          <div class="comparison-label">Without whitelabel</div>
+          <div class="comparison-title">Referral / Affiliate</div>
+          <ul class="comparison-list">
+            <li><span class="icon">→</span> You send customers to us</li>
+            <li><span class="icon">→</span> They see our brand</li>
+            <li><span class="icon">→</span> They pay us directly</li>
+            <li><span class="icon">→</span> You earn commission</li>
+          </ul>
+        </div>
+        
+        <div class="comparison-side highlight-side">
+          <div class="comparison-label">With whitelabel</div>
+          <div class="comparison-title">Your Product</div>
+          <ul class="comparison-list">
+            <li><span class="icon">✓</span> Customers only see your brand</li>
+            <li><span class="icon">✓</span> You set your own pricing</li>
+            <li><span class="icon">✓</span> You own the customer relationship</li>
+            <li><span class="icon">✓</span> You keep the margin</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer">
+      <div class="footer-text">Whitelabel Partnership 2026</div>
+      <div class="footer-url">getspinup.com</div>
+    </div>
+  </div>
+  
+  <!-- Slide 3: How it works -->
+  <div class="slide slide-3">
+    <div class="gradient-blob blob-2"></div>
+    
+    <div class="header">
+      <div class="brand">
+        <div class="brand-icon">⚡</div>
+        Spinup
+      </div>
+      <div class="badge">How it works</div>
+    </div>
+    
+    <div class="content">
+      <h1>
+        Simple <span class="highlight">wholesale</span> model.
+      </h1>
+      
+      <div class="flow-diagram">
+        <div class="flow-box">
+          <div class="flow-icon">👤</div>
+          <div class="flow-title">Your customer</div>
+          <div class="flow-desc">Pays you for AI assistant</div>
+        </div>
+        
+        <div class="flow-arrow">→</div>
+        
+        <div class="flow-box you">
+          <div class="flow-icon">🏢</div>
+          <div class="flow-title">You</div>
+          <div class="flow-desc">Sell under your brand</div>
+        </div>
+        
+        <div class="flow-arrow">→</div>
+        
+        <div class="flow-box spinup">
+          <div class="flow-icon">⚡</div>
+          <div class="flow-title">Spinup</div>
+          <div class="flow-desc">Powers the platform</div>
+        </div>
+      </div>
+      
+      <div class="flow-details">
+        <div class="flow-detail">
+          <div class="flow-detail-title">You invoice your customer</div>
+          <div class="flow-detail-text">At whatever price you set</div>
+        </div>
+        <div class="flow-detail">
+          <div class="flow-detail-title">We invoice you monthly</div>
+          <div class="flow-detail-text">Fixed rate per active bot</div>
+        </div>
+        <div class="flow-detail">
+          <div class="flow-detail-title">You keep the margin</div>
+          <div class="flow-detail-text">Difference is your profit</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer">
+      <div class="footer-text">Whitelabel Partnership 2026</div>
+      <div class="footer-url">getspinup.com</div>
+    </div>
+  </div>
+  
+  <!-- Slide 4: Pricing -->
+  <div class="slide slide-4">
+    <div class="gradient-blob blob-1"></div>
+    
+    <div class="header">
+      <div class="brand">
+        <div class="brand-icon">⚡</div>
+        Spinup
+      </div>
+      <div class="badge">Pricing</div>
+    </div>
+    
+    <div class="content">
+      <h1>
+        <span class="highlight">€X</span> per bot.<br>
+        That's it.
+      </h1>
+      
+      <div class="pricing-hero">
+        <div class="pricing-box">
+          <div class="pricing-value">€X</div>
+          <div class="pricing-unit">per active bot / month</div>
+        </div>
+        
+        <div class="pricing-details">
+          <div class="pricing-item">
+            <div class="pricing-icon">📊</div>
+            <div class="pricing-text"><strong>Simple usage-based billing</strong> — we count active bots at end of month</div>
+          </div>
+          <div class="pricing-item">
+            <div class="pricing-icon">💵</div>
+            <div class="pricing-text"><strong>You set retail price</strong> — charge €25, €50, €100… your call</div>
+          </div>
+          <div class="pricing-item">
+            <div class="pricing-icon">📈</div>
+            <div class="pricing-text"><strong>No caps, no tiers</strong> — same rate whether you have 5 or 500 bots</div>
+          </div>
+          <div class="pricing-item">
+            <div class="pricing-icon">🤝</div>
+            <div class="pricing-text"><strong>Volume? Let's talk</strong> — custom rates for large deployments</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer">
+      <div class="footer-text">Whitelabel Partnership 2026</div>
+      <div class="footer-url">getspinup.com</div>
+    </div>
+  </div>
+  
+  <!-- Slide 5: What's included -->
+  <div class="slide slide-5">
+    <div class="gradient-blob blob-2"></div>
+    
+    <div class="header">
+      <div class="brand">
+        <div class="brand-icon">⚡</div>
+        Spinup
+      </div>
+      <div class="badge">What's included</div>
+    </div>
+    
+    <div class="content">
+      <h1>
+        Everything you need<br>
+        <span class="highlight">to launch.</span>
+      </h1>
+      
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🎨</div>
+          <div class="feature-title">Full white-labeling</div>
+          <div class="feature-desc">Your logo, colors, domain. No Spinup branding visible to your customers.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔌</div>
+          <div class="feature-title">API access</div>
+          <div class="feature-desc">Integrate bot provisioning into your existing platform or workflow.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📱</div>
+          <div class="feature-title">All channels</div>
+          <div class="feature-desc">Telegram, Discord, WhatsApp, Slack, web chat — all included.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🧠</div>
+          <div class="feature-title">Any AI model</div>
+          <div class="feature-desc">OpenAI, Anthropic, Gemini, Mistral — your choice per bot.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🛡️</div>
+          <div class="feature-title">Isolated infrastructure</div>
+          <div class="feature-desc">Each bot on secure VPS. Enterprise-grade security.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💬</div>
+          <div class="feature-title">Partner support</div>
+          <div class="feature-desc">Direct Slack/Discord channel with our team. Priority response.</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer">
+      <div class="footer-text">Whitelabel Partnership 2026</div>
+      <div class="footer-url">getspinup.com</div>
+    </div>
+  </div>
+  
+  <!-- Slide 6: Use cases -->
+  <div class="slide slide-6">
+    <div class="gradient-blob blob-1"></div>
+    
+    <div class="header">
+      <div class="brand">
+        <div class="brand-icon">⚡</div>
+        Spinup
+      </div>
+      <div class="badge">Who it's for</div>
+    </div>
+    
+    <div class="content">
+      <h1>
+        Perfect for<br>
+        <span class="highlight-blue">these businesses.</span>
+      </h1>
+      
+      <div class="usecases-grid">
+        <div class="usecase-card">
+          <div class="usecase-icon">🏢</div>
+          <div class="usecase-content">
+            <div class="usecase-title">Digital agencies</div>
+            <div class="usecase-desc">Add AI assistants to your service offering. Deliver chatbots, support agents, or custom bots for clients.</div>
+          </div>
+        </div>
+        <div class="usecase-card">
+          <div class="usecase-icon">💻</div>
+          <div class="usecase-content">
+            <div class="usecase-title">SaaS platforms</div>
+            <div class="usecase-desc">Embed AI assistants into your product. Let users create bots without leaving your platform.</div>
+          </div>
+        </div>
+        <div class="usecase-card">
+          <div class="usecase-icon">🎯</div>
+          <div class="usecase-content">
+            <div class="usecase-title">Consultancies</div>
+            <div class="usecase-desc">Deploy AI solutions for enterprise clients. Scale without building infrastructure.</div>
+          </div>
+        </div>
+        <div class="usecase-card">
+          <div class="usecase-icon">🏠</div>
+          <div class="usecase-content">
+            <div class="usecase-title">Vertical SaaS</div>
+            <div class="usecase-desc">Real estate, legal, healthcare — add AI to your niche platform without the dev cost.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer">
+      <div class="footer-text">Whitelabel Partnership 2026</div>
+      <div class="footer-url">getspinup.com</div>
+    </div>
+  </div>
+  
+  <!-- Slide 7: CTA -->
+  <div class="slide slide-7">
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    
+    <div class="header">
+      <div class="brand">
+        <div class="brand-icon">⚡</div>
+        Spinup
+      </div>
+    </div>
+    
+    <div class="content">
+      <h1>
+        <span class="highlight">Let's build together.</span>
+      </h1>
+      
+      <p class="subtitle">
+        Tell us about your business and what you want to offer. 
+        We'll set up a pilot and get you live in days.
+      </p>
+      
+      <div class="cta-button">
+        Schedule a call →
+      </div>
+      
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="icon">✉️</div>
+          <span>partners@getspinup.com</span>
+        </div>
+        <div class="contact-item">
+          <div class="icon">🌐</div>
+          <span>getspinup.com</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
