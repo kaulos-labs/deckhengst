@@ -1,33 +1,67 @@
 import { NextResponse } from "next/server";
-import puppeteer from "puppeteer";
+import chromium from "@sparticuz/chromium";
+import puppeteer from "puppeteer-core";
 import path from "path";
-import { getDeckContent } from "@/lib/decks";
+import fs from "fs/promises";
 
 interface RouteParams {
   params: Promise<{ slug: string }>;
 }
 
+// For local dev, use local Chrome
+async function getBrowser() {
+  if (process.env.NODE_ENV === "development") {
+    // Try common Chrome paths for local dev
+    const possiblePaths = [
+      "/usr/bin/google-chrome",
+      "/usr/bin/chromium-browser",
+      "/usr/bin/chromium",
+      process.env.CHROME_PATH,
+    ].filter(Boolean) as string[];
+
+    for (const execPath of possiblePaths) {
+      try {
+        await fs.access(execPath);
+        return puppeteer.launch({
+          executablePath: execPath,
+          headless: true,
+          args: ["--no-sandbox", "--disable-setuid-sandbox"],
+        });
+      } catch {
+        continue;
+      }
+    }
+    throw new Error("No Chrome found for local dev");
+  }
+
+  // Production: use @sparticuz/chromium
+  return puppeteer.launch({
+    args: chromium.args,
+    defaultViewport: chromium.defaultViewport,
+    executablePath: await chromium.executablePath(),
+    headless: chromium.headless,
+  });
+}
+
 export async function GET(request: Request, { params }: RouteParams) {
   const { slug } = await params;
-  const content = await getDeckContent(slug);
+  const decksDir = path.join(process.cwd(), "decks");
+  const filePath = path.join(decksDir, `${slug}.html`);
 
-  if (!content) {
+  try {
+    await fs.access(filePath);
+  } catch {
     return NextResponse.json({ error: "Deck not found" }, { status: 404 });
   }
 
   try {
-    const browser = await puppeteer.launch({
-      headless: true,
-      args: ["--no-sandbox", "--disable-setuid-sandbox"],
-    });
-
+    const browser = await getBrowser();
     const page = await browser.newPage();
     await page.setViewport({ width: 1920, height: 1080 });
 
-    // Load HTML directly
-    const decksDir = path.join(process.cwd(), "decks");
-    const filePath = path.join(decksDir, `${slug}.html`);
-    await page.goto(`file://${filePath}`, { waitUntil: "networkidle0" });
+    // Read HTML content and load it directly
+    const htmlContent = await fs.readFile(filePath, "utf-8");
+    await page.setContent(htmlContent, { waitUntil: "networkidle0" });
 
     // Wait for fonts
     await page.evaluateHandle("document.fonts.ready");
@@ -51,7 +85,7 @@ export async function GET(request: Request, { params }: RouteParams) {
   } catch (error) {
     console.error("PDF generation error:", error);
     return NextResponse.json(
-      { error: "PDF generation failed" },
+      { error: "PDF generation failed", details: String(error) },
       { status: 500 }
     );
   }
