@@ -35,6 +35,9 @@ async function getBrowser() {
   }
 
   // Production: use @sparticuz/chromium
+  chromium.setHeadlessMode = true;
+  chromium.setGraphicsMode = false;
+  
   return puppeteer.launch({
     args: chromium.args,
     defaultViewport: { width: 1920, height: 1080 },
